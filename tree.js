@@ -16,19 +16,21 @@ My implementation:
 Node class that stores: order, parent, if it is root, keys, children, nearest siblings
 Leaf class extends node, # children = # keys
 Root class extends node, min children = 2
+nodesInMem linked list of nodes stored in memory (length is set by user)
 
 Starting the tree, the first node is a Leaf until it has enough inserts to split.
 */
+
 class Node {
-    constructor(order, nodeList, parent, isRoot = false, keyList = [], children = []) {
+    constructor(order, nodesInMem, parent, isRoot = false, keyList = [], children = []) {
         this.order = order;
         this.parent = parent;
         this.isRoot = isRoot;
         this.keyList = keyList;
         this.children = children;
         this.inMemory = true; //should be loaded when created
-        this.nodeList = nodeList;
-        nodeList.add(this); //add self to linked list of in memory nodes
+        this.nodesInMem = nodesInMem;
+        nodesInMem.add(this); //add self to linked list of in memory nodes
         this.greaterSibling = null;
         this.lesserSibling = null;
     }
